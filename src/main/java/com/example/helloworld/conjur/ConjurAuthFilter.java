@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 public class ConjurAuthFilter<P extends Principal> extends AuthFilter<Conjur, ConjurPrincipal> {
 
     final static Logger logger = LoggerFactory.getLogger(ConjurAuthFilter.class);
+    Endpoints endpoints;
 
     private ConjurAuthFilter() {
     }
@@ -41,7 +42,6 @@ public class ConjurAuthFilter<P extends Principal> extends AuthFilter<Conjur, Co
 
         final Token token = Token.fromHeaderValue(authHeader);
         final TokenAuthnProvider authn = new TokenAuthnProvider(token);
-        final Endpoints endpoints = Endpoints.getApplianceEndpoints("https://conjur/api");
         final Conjur conjur = new Conjur(authn, endpoints);
         final ConjurPrincipal principal = new ConjurPrincipal(conjur);
 
@@ -68,17 +68,8 @@ public class ConjurAuthFilter<P extends Principal> extends AuthFilter<Conjur, Co
         });
     }
 
-    @Nullable
-    private Conjur getConjur(String header) {
-        if (header == null) {
-            return null;
-        }
-
-        Token token = Token.fromHeaderValue(header);
-        TokenAuthnProvider authn = new TokenAuthnProvider(token);
-        Endpoints endpoints = Endpoints.getApplianceEndpoints("https://conjur/api");
-
-        return new Conjur(authn, endpoints);
+    public void setApplianceUrl(String applianceUrl) {
+        endpoints = Endpoints.getApplianceEndpoints(applianceUrl);
     }
 
     /**

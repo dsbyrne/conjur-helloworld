@@ -14,6 +14,24 @@ public class HelloWorldConfiguration extends Configuration {
     @NotEmpty
     private String applianceUrl;
 
+    @NotEmpty
+    private String conjurIdentity;
+
+    @NotEmpty
+    private String conjurApiKey;
+
+    @NotEmpty
+    private String databaseUser;
+
+    @NotEmpty
+    private String databasePassword;
+
+    @NotEmpty
+    private String databaseUrl;
+
+    @NotEmpty
+    private String databaseName;
+
     @JsonProperty
     public String getTemplate() {
         return template;
@@ -34,8 +52,31 @@ public class HelloWorldConfiguration extends Configuration {
         this.defaultName = name;
     }
 
-    @JsonProperty
     public String getApplianceUrl() {
         return applianceUrl;
+    }
+
+    public String getConjurIdentity() {
+        return conjurIdentity;
+    }
+
+    public String getConjurApiKey() {
+        return conjurApiKey;
+    }
+
+    public String getDatabaseUser() {
+        return databaseUser;
+    }
+
+    public String getDatabasePassword() {
+        return databasePassword;
+    }
+
+    public String getDatabaseUrl() {
+        return databaseUrl;
+    }
+
+    public String getDatabaseName() {
+        return databaseName;
     }
 }

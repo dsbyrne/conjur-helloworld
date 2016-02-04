@@ -1,0 +1,7 @@
+template: Hello, %s!
+defaultName: Stranger
+applianceUrl: "https://ec2-54-86-250-205.compute-1.amazonaws.com/api"
+databaseUser: prod/hello-world/v1/rds/username
+databasePassword: prod/hello-world/v1/rds/password
+databaseUrl: prod/hello-world/v1/rds/database_url
+databaseName: prod/hello-world/v1/rds/database_name
